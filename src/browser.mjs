@@ -6,7 +6,7 @@
  * interact with Gemini using the user's real authenticated session.
  */
 
-import { execSync } from "child_process";
+import { execFileSync } from "child_process";
 
 /**
  * Execute JavaScript in Chrome's active tab via AppleScript.
@@ -16,7 +16,7 @@ export function chromeJS(js) {
   const escaped = js.replace(/\\/g, "\\\\").replace(/"/g, '\\"');
   const script = `tell application "Google Chrome" to execute active tab of front window javascript "${escaped}"`;
   try {
-    const result = execSync(`osascript -e '${script.replace(/'/g, "'\\''")}'`, {
+    const result = execFileSync("osascript", ["-e", script], {
       encoding: "utf-8",
       timeout: 30000,
       maxBuffer: 50 * 1024 * 1024,
@@ -34,11 +34,16 @@ export function chromeJS(js) {
  * Navigate Chrome's active tab to a URL and wait for it to load.
  */
 export async function navigateTo(url) {
+  const parsed = new URL(url);
+  if (parsed.protocol !== "https:") {
+    throw new Error(`Refusing to navigate to non-HTTPS URL: ${url}`);
+  }
   const escaped = url.replace(/"/g, '\\"');
-  execSync(
-    `osascript -e 'tell application "Google Chrome" to set URL of active tab of front window to "${escaped}"'`,
-    { encoding: "utf-8", timeout: 10000 }
-  );
+  const script = `tell application "Google Chrome" to set URL of active tab of front window to "${escaped}"`;
+  execFileSync("osascript", ["-e", script], {
+    encoding: "utf-8",
+    timeout: 10000,
+  });
   await sleep(3000);
   for (let i = 0; i < 10; i++) {
     const loading = chromeJS("document.readyState");

@@ -75,6 +75,7 @@ if (VERBOSE) {
 
 function sanitizeFilename(name) {
   return name
+    .replace(/[\x00-\x1f\x7f]/g, "")
     .replace(/[/\\?%*:|"<>]/g, "-")
     .replace(/\s+/g, " ")
     .trim()
@@ -105,7 +106,8 @@ async function main() {
   console.log(`Provider: ${provider.displayName}`);
   console.log(`Output:   ${OUTPUT_DIR}`);
   console.log(`Format:   ${FORMAT}`);
-  console.log(`Delay:    ${DELAY}ms\n`);
+  console.log(`Delay:    ${DELAY}ms`);
+  console.log(`\nNote: This tool will navigate Chrome's active tab. Use a dedicated window.\n`);
 
   // Navigate to provider if needed
   const currentURL = chromeJS("window.location.href");
