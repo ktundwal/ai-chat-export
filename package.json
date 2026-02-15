@@ -4,7 +4,7 @@
   "description": "Export AI chat conversations (Gemini, ChatGPT, Copilot, DeepSeek) to Markdown and JSON. Uses AppleScript to control Chrome — no API keys needed.",
   "type": "module",
   "bin": {
-    "ai-chat-export": "./bin/ai-chat-export.mjs"
+    "ai-chat-export": "bin/ai-chat-export.mjs"
   },
   "files": [
     "bin/",
