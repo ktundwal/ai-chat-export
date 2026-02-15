@@ -1,0 +1,11 @@
+{
+  "name": "ai-chat-export",
+  "description": "Export AI chat conversations (Gemini, ChatGPT, Copilot, DeepSeek) to Markdown and JSON using AppleScript + Chrome",
+  "version": "1.0.0",
+  "author": {
+    "name": "Kapil Tundwal"
+  },
+  "homepage": "https://github.com/ktundwal/ai-chat-export",
+  "repository": "https://github.com/ktundwal/ai-chat-export",
+  "license": "MIT"
+}

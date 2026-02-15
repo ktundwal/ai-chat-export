@@ -1,0 +1,45 @@
+{
+  "name": "ai-chat-export",
+  "version": "1.0.0",
+  "description": "Export AI chat conversations (Gemini, ChatGPT, Copilot, DeepSeek) to Markdown and JSON. Uses AppleScript to control Chrome — no API keys needed.",
+  "type": "module",
+  "bin": {
+    "ai-chat-export": "./bin/ai-chat-export.mjs"
+  },
+  "files": [
+    "bin/",
+    "src/",
+    ".claude-plugin/",
+    "skills/",
+    "LICENSE",
+    "README.md"
+  ],
+  "scripts": {
+    "start": "node bin/ai-chat-export.mjs"
+  },
+  "keywords": [
+    "ai-chat-export",
+    "gemini",
+    "chatgpt",
+    "copilot",
+    "deepseek",
+    "chat-export",
+    "conversation-export",
+    "applescript",
+    "chrome",
+    "markdown"
+  ],
+  "author": "Kapil Tundwal",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ktundwal/ai-chat-export.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ktundwal/ai-chat-export/issues"
+  },
+  "homepage": "https://github.com/ktundwal/ai-chat-export#readme"
+}
